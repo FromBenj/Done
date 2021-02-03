@@ -1,5 +1,9 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 const time = document.getElementById('time');
 
+/*
 function getTime() {
     var currentDate = new Date();
     var currentHour = currentDate.getHours();
@@ -9,3 +13,24 @@ function getTime() {
 }
 getTime();
 setInterval(getTime, 1000);
+*/
+
+anime({
+    targets: '#done-logo path',
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: 'easeInOutSine',
+    duration: 2000,
+    delay: function(el, i) { return i * 250 },
+    direction: 'alternate',
+    loop: true
+});
+
+
+anime({ targets: '.home-container',
+        backgroundColor: '#92afaf',
+        easing: 'easeInOutBack',
+    }, "3000")
+
+
+
+

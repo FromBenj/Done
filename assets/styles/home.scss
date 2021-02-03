@@ -1,0 +1,29 @@
+.home-container {
+  background-color: #485454;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-logo {
+  flex: 2;
+}
+
+.home-welcome {
+  flex: 1;
+}
+
+.home-login {
+  flex: 1;
+}
+
+.logo-underline {
+  width: 30%;
+  height: 1em;
+  border-radius: 5px;
+  background-color: white;
+  margin: 2em 0;
+}

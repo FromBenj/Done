@@ -148,6 +148,34 @@ class ToDoListController extends AbstractController
             'tasks_sunday' => $allTasksSunday,
             'tasks_urgent' => $allTasksUrgent,
         ]);
+    }
 
+    /**
+     * @Route("/day", name="day")
+     */
+    public function day(Request $request): Response
+    {
+        $day = date('l');
+        $date = date('F\, \t\h\e jS');
+
+        $task = new Task();
+        $form = $this->createForm(TaskType::class, $task);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $task->setAuthor($this->getUser());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+        }
+        $allTasks = $this->getDoctrine()
+            ->getRepository(Task::class)
+            ->findAll();
+
+        return $this->render('to_do_list/all.html.twig', [
+            'day' => $day,
+            'date'=> $date,
+            'task_form' => $form->createView(),
+            'all_tasks' => $allTasks,
+        ]);
     }
 }

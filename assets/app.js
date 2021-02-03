@@ -13,3 +13,6 @@ const $ = require('jquery');
 require('bootstrap');
 require('./js/anime.min');
 require('./js/animations');
+
+
+
