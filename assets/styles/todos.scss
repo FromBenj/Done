@@ -1,0 +1,43 @@
+.button-done {
+  width: 25px;
+  height: 25px;
+  background-color: $green;
+  border-radius: 50%;
+}
+
+.button-delete {
+  width: 25px;
+  height: 25px;
+  background-color: $main-red;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.button-week {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.list-item {
+  width: 80%;
+  background-color: $main-grey;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.list-content {
+  flex: 1;
+  font-weight: bold;
+}
+
+.list-day {
+  margin-left: 6%;
+  color: $main-turquoise-blue;
+  margin-top: 1em;
+}
+
+.urgent-items {
+  margin-bottom: 6em;
+}

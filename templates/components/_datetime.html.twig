@@ -1,0 +1,6 @@
+<div class="date-and-time d-flex flex-column justify-content-center align-items-center">
+    {% if day is defined and date is defined %}
+        <div class="datetime datetime-date">{{ day }}</div>
+        <div class="datetime datetime-time">{{ date }}</div>
+    {% endif %}
+</div>

@@ -1,0 +1,26 @@
+{% form_theme task_form 'bootstrap_4_layout.html.twig' %}
+<div class="d-flex justify-content-center align-items-center">
+    <div class="form-container d-flex justify-content-center align-items-center">
+        {{ form_start(task_form) }}
+        <div class="d-flex w-100 justify-content-around align-items-center">
+            <div>
+                <div>New task</div>
+                <div class="mr-2">{{ form_row(task_form.content) }}</div>
+            </div>
+            <div>
+                <div>Category</div>
+                <div class="mr-2">{{ form_row(task_form.category) }}</div>
+            </div>
+            <div>
+                <div>This week ?</div>
+                <div class="mr-2"> {{ form_row(task_form.isOfTheWeek) }}</div>
+            </div>
+            <div>
+                <div>Day</div>
+                <div>{{ form_row(task_form.day) }}</div>
+            </div>
+            <button>O</button>
+        </div>
+        {{ form_end(task_form) }}
+    </div>
+</div>

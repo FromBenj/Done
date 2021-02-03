@@ -8,7 +8,11 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% include 'components/_nav.html.twig' %}
+        <div class="main">
+            {% include 'components/_datetime.html.twig' %}
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

@@ -1,3 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 @import '~@fortawesome/fontawesome-free/css/all.css';
+@import "variables";
 @import "global";
+@import "nav";
+@import "datetime";
+@import "form";
+@import "todos";
