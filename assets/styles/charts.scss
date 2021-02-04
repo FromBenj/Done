@@ -1,0 +1,25 @@
+.bar-container {
+  height: 6em;
+  align-items: center;
+}
+
+.out-bar {
+  height: 3em;
+  border: solid 1px black;
+  width: 35vw;
+  overflow: hidden;
+  border-top-right-radius: 50px;
+}
+
+#bar {
+  height: 3em;
+  width: 28vw;
+  background-color: $main-turquoise-blue;
+  border-top-right-radius: 50px;
+
+}
+
+#nb-done, #nb-week {
+  position: absolute;
+  left: -100px;
+}

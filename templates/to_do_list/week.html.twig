@@ -3,6 +3,8 @@
 {% block title %}All Tasks{% endblock %}
 
 {% block body %}
+    <div id="nb-week">{{ nb_week }}</div>
+    <div id="nb-done">{{ nb_done }}</div>
 <div class="d-flex justify-content-around align-items-center">
     <div class="d-flex justify-content-around align-items-center">
         <p class="mb-0 mr-3 font-italic font-weight-bold">Day Tasks</p>
@@ -19,6 +21,11 @@
     </div>
 </div>
 {% include 'components/_tasks-form.html.twig' %}
+<div class="bar-container d-flex justify-content-center">
+    <div class="out-bar">
+        <div id="bar"></div>
+    </div>
+</div>
 {% if tasks_urgent %}
     <h2 class="list-day">Urgent</h2>
     <div class="d-flex flex-column justify-content-center align-items-center urgent-items">

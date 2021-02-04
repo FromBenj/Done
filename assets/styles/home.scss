@@ -21,10 +21,35 @@
 
 .home-welcome {
   flex: 1;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2em;
+}
+
+.home-login-signin {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  font-family:'Pacifico', cursive;
+  font-size: 3em;
 }
 
 .home-login {
-  flex: 1;
+  color: $main-green;
+  &:hover {
+    color: #d1f98f;
+    text-decoration: none;
+  }
+}
+
+.home-signin {
+  color: $main-yellow;
+  &:hover {
+    color: #fff6a4;
+    text-decoration: none;
+  }
 }
 
 .logo-underline {

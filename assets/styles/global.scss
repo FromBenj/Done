@@ -20,9 +20,9 @@ h5 {
   color: black;
 }
 
-.citation {
+#citation {
   width: 100vw;
-  height: 31em;
+  height: 100vh;
   background-color: white;
   opacity: 95%;
   position:absolute;
@@ -30,4 +30,16 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  cursor: grab;
+  color: $main-turquoise-blue;
+  #citation-close{
+    position: absolute;
+    right: 4em;
+    top: 4em;
+  }
+}
+
+.turquoise-color {
+  color: $main-turquoise-blue;
 }

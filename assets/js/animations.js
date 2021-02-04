@@ -15,9 +15,11 @@ if (time) {
     setInterval(getTime, 1000);
 }
 
-const homeContainer = document.getElementById('home-container');
-homeContainer.classList.add('transition-home-background');
 
+const homeContainer = document.getElementById('home-container');
+if(homeContainer) {
+    homeContainer.classList.add('transition-home-background');
+}
 
 
 

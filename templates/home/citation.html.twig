@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{ encore_entry_link_tags('app') }}
+    <title>Welcome!</title>
+</head>
+<body>
+    <a href="{{ path('to_do_list_week')}}">
+    <div id="citation">
+        <div id="citation-close">
+            <i class="fa fa-window-close fa-lg turquoise-color" aria-hidden="true"></i>
+        </div>
+        <div>
+            <h2 class="font-weight-bold">{{ citation['text']}}</h2>
+        </div>
+        <div>
+            <h3 class="font-italic">{{ citation['author'] }}</h3>
+        </div>
+    </div>
+    </a>
+</body>
+</html>

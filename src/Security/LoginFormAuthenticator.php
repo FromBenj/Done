@@ -50,7 +50,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('to_do_list_week'));
+        return new RedirectResponse($this->urlGenerator->generate('citation'));
     }
 
     protected function getLoginUrl(Request $request): string

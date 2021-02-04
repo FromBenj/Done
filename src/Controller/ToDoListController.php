@@ -139,6 +139,27 @@ class ToDoListController extends AbstractController
                 ]
             );
 
+        $allTasksOfTheWeek = $this->getDoctrine()
+            ->getRepository(Task::class)
+            ->findBy(
+                [
+                    'isOfTheWeek' => true,
+                    'author' => $user,
+                ]
+            );
+        $nbTasksWeek = count($allTasksOfTheWeek);
+
+        $allTasksOfTheWeekAndDone = $this->getDoctrine()
+            ->getRepository(Task::class)
+            ->findBy(
+                [
+                    'isOfTheWeek' => true,
+                    'author' => $user,
+                    'isDone' => true,
+                ]
+            );
+        $nbTasksDone = count($allTasksOfTheWeekAndDone);
+
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
@@ -148,7 +169,6 @@ class ToDoListController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
         }
-
 
 
         return $this->render('to_do_list/week.html.twig', [
@@ -163,6 +183,8 @@ class ToDoListController extends AbstractController
             'tasks_saturday' => $allTasksSaturday,
             'tasks_sunday' => $allTasksSunday,
             'tasks_urgent' => $allTasksUrgent,
+            'nb_week' => $nbTasksWeek,
+            'nb_done' => $nbTasksDone,
         ]);
     }
 
