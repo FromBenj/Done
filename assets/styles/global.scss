@@ -19,3 +19,15 @@ h5 {
 .fa, .fas {
   color: black;
 }
+
+.citation {
+  width: 100vw;
+  height: 31em;
+  background-color: white;
+  opacity: 95%;
+  position:absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -21,10 +21,11 @@
     {% include 'components/_tasks-form.html.twig' %}
     <div class="d-flex flex-column justify-content-center align-items-center">
         {% for task in all_tasks %}
-        <div class="d-flex justify-content-center align-items-center list-item">
+        <div class="d-flex justify-content-center align-items-center list-item
+            {% if task.isDone == 1 %} done-background {% endif %}">
             <div class="list-content">{{ task.content }}</div>
             <div class="d-flex justify-content-center align-items-center">
-                <a href="{{ path('task_done', {'id': task.id}) }}">
+                <a href="{{ path('task_done', {'id': task.id, 'page': 'all'}) }}">
                     <div class="button-done"></div>
                 </a>
                 <div class="button-delete">
@@ -34,7 +35,10 @@
                         <button class="btn"></button>
                     </form>
                 </div>
-                <div class="button-week"></div>
+                <a href="{{ path('task_week', {'id': task.id}) }}">
+                    <div class="button-week
+                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}">"></div>
+                </a>
             </div>
         </div>
         {% endfor %}

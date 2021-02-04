@@ -37,14 +37,50 @@ class TaskController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="done",  methods={"GET","POST"})
+     * @Route("/{id}/{page}", name="done",  methods={"GET","POST"})
      * @Entity("task", expr="repository.find(id)")
      */
-    public function done(Task $task): Response
+    public function done(Task $task, string $page): Response
     {
-        $task->setIsOfTheWeek('1');
+        $isDone = $task->getIsDone();
+        if($isDone) {
+            $task->setIsDone('0');
+        } else {
+            $task->setIsDone('1');
+        }
+
+
         $this->getDoctrine()->getManager()->flush();
-        $this->addFlash('success', 'Added to your to do list of the week !');
+
+        if($task->getIsDone()) {
+            $this->addFlash('success', 'Well done!');
+        }
+        if($page === 'day') {
+            return $this->redirectToRoute('to_do_list_day');
+        } elseif ($page === 'week') {
+            return $this->redirectToRoute('to_do_list_week');
+        } else {
+            return $this->redirectToRoute('to_do_list_all');
+        }
+    }
+
+    /**
+     * @Route("/{id}", name="week",  methods={"GET","POST"})
+     * @Entity("task", expr="repository.find(id)")
+     */
+    public function ofTheWeek(Task $task): Response
+    {
+        $isWeek = $task->getIsOfTheWeek();
+        if($isWeek === true) {
+            $task->setIsOfTheWeek(false);
+        } else {
+            $task->setIsOfTheWeek('1');
+        }
+        $this->getDoctrine()->getManager()->flush();
+
+        if($task->getIsOfTheWeek()) {
+            $this->addFlash('success', 'Added to your to do list of the week !');
+        }
         return $this->redirectToRoute('to_do_list_week');
     }
 }

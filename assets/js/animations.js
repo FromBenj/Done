@@ -15,6 +15,12 @@ if (time) {
     setInterval(getTime, 1000);
 }
 
+const homeContainer = document.getElementById('home-container');
+homeContainer.classList.add('transition-home-background');
+
+
+
+
 /*
 anime({
     targets: '#done-logo path',
@@ -25,7 +31,6 @@ anime({
     direction: 'alternate',
     loop: true
 });
-*/
 
 const homeContainer = document.getElementsByClassName('home-container');
 if (homeContainer) {
@@ -35,7 +40,7 @@ if (homeContainer) {
         easing: 'easeInOutBack',
     }, "3000")
 }
-
+*/
 
 
 

@@ -1,4 +1,4 @@
-.home-container {
+#home-container {
   background-color: #485454;
   width: 100vw;
   height: 100vh;
@@ -6,6 +6,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  &:hover{
+    background-color: #92afaf;
+  }
+}
+
+.transition-home-background {
+  transition: 2.5s;
 }
 
 .home-logo {
