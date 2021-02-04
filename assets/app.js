@@ -11,8 +11,10 @@ import './styles/app.scss';
 //Bootstrap
 const $ = require('jquery');
 require('bootstrap');
+require('./js/buttons');
 require('./js/anime.min');
 require('./js/animations');
+
 
 
 

@@ -5,22 +5,21 @@
 {% block body %}
     <div class="d-flex justify-content-around align-items-center">
         <div class="d-flex justify-content-around align-items-center">
-            <p class="mb-0 mr-3 font-italic font-weight-bold">Tasks of the Week</p>
-            <a href="{{ path('to_do_list_week') }}">
+            <p class="mb-0 mr-3 font-italic font-weight-bold">all Tasks</p>
+            <a href="{{ path('to_do_list_all') }}">
                 <i class="fa fa-angle-left fa-7x" aria-hidden="true"></i>
             </a>
         </div>
-        <h2 class="text-center font-weight-bold"> All Tasks </h2>
+        <h2 class="text-center font-weight-bold"> Day Tasks </h2>
         <div class="d-flex justify-content-around align-items-center">
-            <a href="{{ path('to_do_list_day')}}">
+            <a href="{{ path('to_do_list_week')}}">
                 <i class="fa fa-angle-right fa-7x" aria-hidden="true"></i>
             </a>
-            <p class="mb-0 ml-3 font-italic font-weight-bold">Day Tasks</p>
+            <p class="mb-0 ml-3 font-italic font-weight-bold">Tasks of the Week</p>
         </div>
     </div>
-    {% include 'components/_tasks-form.html.twig' %}
     <div class="d-flex flex-column justify-content-center align-items-center">
-        {% for task in all_tasks %}
+        {% for task in tasks_day %}
         <div class="d-flex justify-content-center align-items-center list-item">
             <div class="list-content">{{ task.content }}</div>
             <div class="d-flex justify-content-center align-items-center">
@@ -28,7 +27,7 @@
                     <div class="button-done"></div>
                 </a>
                 <div class="button-delete">
-                    <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'all'}) }}">
+                    <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'day'}) }}">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
                         <button class="btn"></button>

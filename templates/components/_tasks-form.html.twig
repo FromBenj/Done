@@ -2,7 +2,7 @@
 <div class="d-flex justify-content-center align-items-center">
     <div class="form-container d-flex justify-content-center align-items-center">
         {{ form_start(task_form) }}
-        <div class="d-flex w-100 justify-content-around align-items-center">
+        <div class=" task-form d-flex w-100 justify-content-around align-items-center font-weight-bold">
             <div>
                 <div>New task</div>
                 <div class="mr-2">{{ form_row(task_form.content) }}</div>
@@ -13,13 +13,17 @@
             </div>
             <div>
                 <div>This week ?</div>
-                <div class="mr-2"> {{ form_row(task_form.isOfTheWeek) }}</div>
+                <div id="is-of-the-week-button" class="mr-2">
+                    {{ form_row(task_form.isOfTheWeek) }}
+                </div>
             </div>
             <div>
                 <div>Day</div>
                 <div>{{ form_row(task_form.day) }}</div>
             </div>
-            <button>O</button>
+            <button>
+                <i class="text-white fas fa-check"></i>
+            </button>
         </div>
         {{ form_end(task_form) }}
     </div>

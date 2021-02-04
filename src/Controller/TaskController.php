@@ -35,4 +35,16 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('to_do_list_all');
         }
     }
+
+    /**
+     * @Route("/{id}", name="done",  methods={"GET","POST"})
+     * @Entity("task", expr="repository.find(id)")
+     */
+    public function done(Task $task): Response
+    {
+        $task->setIsOfTheWeek('1');
+        $this->getDoctrine()->getManager()->flush();
+        $this->addFlash('success', 'Added to your to do list of the week !');
+        return $this->redirectToRoute('to_do_list_week');
+    }
 }

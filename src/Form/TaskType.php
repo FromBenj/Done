@@ -26,6 +26,7 @@ class TaskType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'label' => false,
+                'required' => false,
             ])
 
             ->add('day', ChoiceType::class, [
@@ -40,10 +41,11 @@ class TaskType extends AbstractType
                     'Sunday' => 'Sunday',
                 ],
                 'label' => false,
+                'required' => false,
             ])
             ->add('isOfTheWeek', CheckboxType::class, [
-                'label' => false,
                 'required'   => false,
+                'label' => 'Week?',
             ])
         ;
     }

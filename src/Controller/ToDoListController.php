@@ -23,6 +23,8 @@ class ToDoListController extends AbstractController
         $day = date('l');
         $date = date('F\, \t\h\e jS');
 
+        $user = $this->getUser();
+
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
@@ -34,7 +36,11 @@ class ToDoListController extends AbstractController
         }
         $allTasks = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findAll();
+            ->findBy(
+                [
+                    'author' => $user,
+                ]
+            );
 
         return $this->render('to_do_list/all.html.twig', [
             'day' => $day,
@@ -53,6 +59,8 @@ class ToDoListController extends AbstractController
         $day = date('l');
         $date = date('F\, \t\h\e jS');
 
+        $user = $this->getUser();
+
         $urgent = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findByName('Urgent');
@@ -63,6 +71,7 @@ class ToDoListController extends AbstractController
                 [
                     'category' => $urgent,
                     'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
 
@@ -71,7 +80,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Monday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
         $allTasksTuesday = $this->getDoctrine()
@@ -79,7 +89,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Tuesday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
         $allTasksWednesday = $this->getDoctrine()
@@ -87,7 +98,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Wednesday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
         $allTasksThursday = $this->getDoctrine()
@@ -95,7 +107,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Thursday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
         $allTasksFriday = $this->getDoctrine()
@@ -103,7 +116,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Friday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
         $allTasksSaturday = $this->getDoctrine()
@@ -111,7 +125,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Saturday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
         $allTasksSunday = $this->getDoctrine()
@@ -119,7 +134,8 @@ class ToDoListController extends AbstractController
             ->findBy(
                 [
                     'day' => 'Sunday',
-                    'isOfTheWeek' => true
+                    'isOfTheWeek' => true,
+                    'author' => $user,
                 ]
             );
 
@@ -157,25 +173,22 @@ class ToDoListController extends AbstractController
     {
         $day = date('l');
         $date = date('F\, \t\h\e jS');
+        $user = $this->getUser();
 
-        $task = new Task();
-        $form = $this->createForm(TaskType::class, $task);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $task->setAuthor($this->getUser());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
-        }
-        $allTasks = $this->getDoctrine()
+        $tasksOfTheDay = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findAll();
+            ->findBy(
+                [
+                    'day' => $day,
+                    'isOfTheWeek' => true,
+                    'author' => $user,
+                ]
+            );
 
-        return $this->render('to_do_list/all.html.twig', [
+        return $this->render('to_do_list/day.html.twig', [
             'day' => $day,
             'date'=> $date,
-            'task_form' => $form->createView(),
-            'all_tasks' => $allTasks,
+            'tasks_day' => $tasksOfTheDay,
         ]);
     }
 }
