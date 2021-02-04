@@ -9,6 +9,7 @@
   width: 35vw;
   overflow: hidden;
   border-top-right-radius: 50px;
+  margin-left: 50vw;
 }
 
 #bar {
@@ -22,4 +23,14 @@
 #nb-done, #nb-week {
   position: absolute;
   left: -100px;
+}
+
+.done-percentage {
+  margin-left: 2em;
+  font-weight: bold;
+  color: $main-turquoise-blue;
+}
+
+#count-up {
+  font-size: 2em;
 }

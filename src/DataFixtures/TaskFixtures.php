@@ -78,6 +78,14 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
         $task = new Task();
         $task->setAuthor($this->getReference('bonjour'));
+        $task->setCategory($this->getReference('urgent'));
+        $task->setDay('Friday');
+        $task->setContent('Présentation checkpoint 4');
+        $task->setIsOfTheWeek(true);
+        $manager->persist($task);
+
+        $task = new Task();
+        $task->setAuthor($this->getReference('bonjour'));
         $task->setCategory($this->getReference('maison'));
         $task->setDay('Saturday');
         $task->setContent('Week-end à la campagne');

@@ -26,6 +26,7 @@ class TaskController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($task);
             $entityManager->flush();
+            $this->addFlash('danger', 'This task is deleted');
             }
         if($page === 'day') {
             return $this->redirectToRoute('to_do_list_day');
@@ -79,7 +80,7 @@ class TaskController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
 
         if($task->getIsOfTheWeek()) {
-            $this->addFlash('success', 'Added to your to do list of the week !');
+            $this->addFlash('warning', 'Added to your to do list of the week !');
         }
         return $this->redirectToRoute('to_do_list_week');
     }

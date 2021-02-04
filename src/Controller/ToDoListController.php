@@ -149,6 +149,7 @@ class ToDoListController extends AbstractController
             );
         $nbTasksWeek = count($allTasksOfTheWeek);
 
+
         $allTasksOfTheWeekAndDone = $this->getDoctrine()
             ->getRepository(Task::class)
             ->findBy(

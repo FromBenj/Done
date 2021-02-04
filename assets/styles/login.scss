@@ -1,0 +1,23 @@
+.login-title {
+  font-family: 'Pacifico', cursive;
+  margin-bottom: 2em;
+}
+
+
+#inputEmail {
+  margin-bottom: 2em;
+  width: 30%;
+}
+
+#inputPassword {
+  margin-bottom: 5em;
+  width: 30%;
+}
+
+.btn-primary {
+  background-color: #92afaf;
+  color:white;
+  &:hover {
+    background-color: #d5ebeb;
+  }
+}
