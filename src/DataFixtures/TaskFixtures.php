@@ -16,6 +16,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
         $task->setAuthor($this->getReference('bonjour'));
         $task->setCategory($this->getReference('apéro'));
         $task->setDay('Monday');
+        $task->setIsDone(true);
         $task->setContent('Apéro Skype avec Charlotte et Laure');
         $task->setIsOfTheWeek(true);
         $manager->persist($task);
@@ -24,6 +25,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
         $task->setAuthor($this->getReference('bonjour'));
         $task->setCategory($this->getReference('loisir'));
         $task->setDay('Tuesday');
+        $task->setIsDone(true);
         $task->setContent('Match de Tennis / tournois');
         $task->setIsOfTheWeek(true);
         $manager->persist($task);
@@ -56,6 +58,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
         $task->setAuthor($this->getReference('bonjour'));
         $task->setCategory($this->getReference('urgent'));
         $task->setDay('Thursday');
+        $task->setIsDone(true);
         $task->setContent('Rendre le rapport TN12 !');
         $task->setIsOfTheWeek(true);
         $manager->persist($task);

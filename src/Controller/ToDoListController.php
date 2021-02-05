@@ -61,6 +61,16 @@ class ToDoListController extends AbstractController
 
         $user = $this->getUser();
 
+        $task = new Task();
+        $form = $this->createForm(TaskType::class, $task);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $task->setAuthor($this->getUser());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+        }
+
         $urgent = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findByName('Urgent');
@@ -160,17 +170,6 @@ class ToDoListController extends AbstractController
                 ]
             );
         $nbTasksDone = count($allTasksOfTheWeekAndDone);
-
-        $task = new Task();
-        $form = $this->createForm(TaskType::class, $task);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $task->setAuthor($this->getUser());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
-        }
-
 
         return $this->render('to_do_list/week.html.twig', [
             'day' => $day,
