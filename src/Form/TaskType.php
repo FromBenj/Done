@@ -31,21 +31,21 @@ class TaskType extends AbstractType
 
             ->add('day', ChoiceType::class, [
                 'choices'  => [
-                    '' =>'',
-                    'Monday' => 'Monday',
-                    'Tuesday' => 'Tuesday',
-                    'Wednesday' => 'Wednesday',
-                    'Thursday' => 'Thursday',
-                    'Friday' => 'Friday',
-                    'Saturday' => 'Saturday',
-                    'Sunday' => 'Sunday',
+                    'Not Defined' =>'Not',
+                    'Monday'      => 'Monday',
+                    'Tuesday'     => 'Tuesday',
+                    'Wednesday'   => 'Wednesday',
+                    'Thursday'    => 'Thursday',
+                    'Friday'      => 'Friday',
+                    'Saturday'    => 'Saturday',
+                    'Sunday'      => 'Sunday',
                 ],
                 'label' => false,
                 'required' => false,
             ])
             ->add('isOfTheWeek', CheckboxType::class, [
                 'required'   => false,
-                'label' => 'Week?',
+                'label' => false,
             ])
         ;
     }

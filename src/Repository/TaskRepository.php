@@ -19,6 +19,21 @@ class TaskRepository extends ServiceEntityRepository
         parent::__construct($registry, Task::class);
     }
 
+    public function tasksOfTheDay($day, $userId): Array
+    {
+        $queryBuilder = $this->createQueryBuilder('t')
+            ->andWhere('t.day = :day')
+            ->setParameter('day', $day)
+            ->andWhere('t.isOfTheWeek = :bool')
+            ->setParameter('bool', true)
+            ->andWhere('t.author = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
+
     // /**
     //  * @return Task[] Returns an array of Task objects
     //  */

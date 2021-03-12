@@ -9,13 +9,14 @@
 
 #task_content {
   width: 27vw;
+  border: solid 1px;
 }
 
-#task_isOfTheWeek {
-  display: none;
+#task_category, #task_day {
+  border: solid 1px;
 }
 
-#is-of-the-week-button {
+.is-of-the-week-button {
   background-color: white;
   border-radius: 50%;
   height: 47px;
@@ -30,6 +31,9 @@
   }
   .form-check {
     padding-left: 0;
+  }
+  #task_isOfTheWeek {
+    display: none;
   }
 }
 

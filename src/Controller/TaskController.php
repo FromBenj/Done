@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Form\TaskType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,5 +84,33 @@ class TaskController extends AbstractController
             $this->addFlash('warning', 'Added to your to do list of the week !');
         }
         return $this->redirectToRoute('to_do_list_week');
+    }
+
+    /**
+     * @Route("/modify/{id}/{page}", name="edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Task $task, string $page): Response
+    {
+        // Check wether the logged in user is the owner of the task
+        if ($this->getUser() == $task->getAuthor()) {
+            $form = $this->createForm(TaskType::class, $task);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+            }
+            return $this->render('task/edit.html.twig', [
+                'task_form' => $form->createView(),
+                'page'      => $page
+            ]);
+        }
+        else {
+            if($page === 'day') {
+                return $this->redirectToRoute('to_do_list_day');
+            } elseif ($page === 'week') {
+                return $this->redirectToRoute('to_do_list_week');
+            } else {
+                return $this->redirectToRoute('to_do_list_all');
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\TasksCurrentWeek;
 
 /**
  * @Route("/to/do/list", name="to_do_list_")
@@ -60,6 +61,7 @@ class ToDoListController extends AbstractController
         $date = date('F\, \t\h\e jS');
 
         $user = $this->getUser();
+        $userId = $user->getId();
 
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
@@ -87,67 +89,37 @@ class ToDoListController extends AbstractController
 
         $allTasksMonday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Monday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Monday', $userId);
+
         $allTasksTuesday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Tuesday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Tuesday', $userId);
+
         $allTasksWednesday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Wednesday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Wednesday', $userId);
+
         $allTasksThursday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Thursday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Thursday', $userId);
+
         $allTasksFriday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Friday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Friday', $userId);
+
         $allTasksSaturday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Saturday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Saturday', $userId);
+
         $allTasksSunday = $this->getDoctrine()
             ->getRepository(Task::class)
-            ->findBy(
-                [
-                    'day' => 'Sunday',
-                    'isOfTheWeek' => true,
-                    'author' => $user,
-                ]
-            );
+            ->tasksOfTheDay('Sunday', $userId);
+
+
+        $allTasksNotDefined = $this->getDoctrine()
+            ->getRepository(Task::class)
+            ->tasksOfTheDay('Not', $userId);
+
 
         $allTasksOfTheWeek = $this->getDoctrine()
             ->getRepository(Task::class)
@@ -182,6 +154,7 @@ class ToDoListController extends AbstractController
             'tasks_friday' => $allTasksFriday,
             'tasks_saturday' => $allTasksSaturday,
             'tasks_sunday' => $allTasksSunday,
+            'tasks_not_defined' => $allTasksNotDefined,
             'tasks_urgent' => $allTasksUrgent,
             'nb_week' => $nbTasksWeek,
             'nb_done' => $nbTasksDone,
