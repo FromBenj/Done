@@ -34,12 +34,185 @@
     <h2 class="list-day">Urgent</h2>
     <div class="d-flex flex-column justify-content-center align-items-center urgent-items">
         {%  for task in tasks_urgent %}
-            <div class="list-item
-            {% if task.isDone == 1 %} done-background {% endif %}">
-                <div>
-                    <h4 class="font-italic turquoise-blue-color">{{ task.day }}</h4>
+            <div class="container-list-item">
+                <div class="d-flex align-items-center mr-4">
+                    <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                        <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+                    </a>
                 </div>
+                <div class="list-item
+                {% if task.isDone == 1 %} done-background {% endif %}">
+                    <div>
+                        <h4 class="font-italic turquoise-blue-color">
+                            <span>
+                                <i class=" fas fa-sm fa-exclamation red-color"></i>
+                            </span>
+                            {{ task.day }}
+                        </h4>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="list-content">{{ task.content }}</div>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                                <div class="button-done"></div>
+                            </a>
+                            <div class="button-delete">
+                                <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                                    <button class="btn"></button>
+                                </form>
+                            </div>
+                            <a href="{{ path('task_week', {'id': task.id}) }}">
+                                <div class="button-week
+                            {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<h2 class="list-day">Monday</h2>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    {%  for task in tasks_monday %}
+        <div class="container-list-item">
+            <div class="d-flex align-items-center mr-4">
+                <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                    <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center list-item
+            {% if task.isDone == 1 %} done-background {% endif %}">
+                <div class="list-content">{{ task.content }}</div>
                 <div class="d-flex justify-content-center align-items-center">
+                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                        <div class="button-done"></div>
+                    </a>
+                    <div class="button-delete">
+                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                            <button class="btn"></button>
+                        </form>
+                    </div>
+                    <a href="{{ path('task_week', {'id': task.id}) }}">
+                        <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<h2 class="list-day">Tuesday</h2>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    {%  for task in tasks_tuesday %}
+        <div class="container-list-item">
+            <div class="d-flex align-items-center mr-4">
+                <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                    <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center list-item
+            {% if task.isDone == 1 %} done-background {% endif %}">
+                <div class="list-content">{{ task.content }}</div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                        <div class="button-done"></div>
+                    </a>
+                    <div class="button-delete">
+                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                            <button class="btn"></button>
+                        </form>
+                    </div>
+                    <a href="{{ path('task_week', {'id': task.id}) }}">
+                        <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<h2 class="list-day">Wednesday</h2>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    {%  for task in tasks_wednesday %}
+        <div class="container-list-item">
+            <div class="d-flex align-items-center mr-4">
+                <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                    <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center list-item
+            {% if task.isDone == 1 %} done-background {% endif %}">
+                <div class="list-content">{{ task.content }}</div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                        <div class="button-done"></div>
+                    </a>
+                    <div class="button-delete">
+                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                            <button class="btn"></button>
+                        </form>
+                    </div>
+                    <a href="{{ path('task_week', {'id': task.id}) }}">
+                        <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<h2 class="list-day">Thursday</h2>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    {%  for task in tasks_thursday %}
+        <div class="container-list-item">
+            <div class="d-flex align-items-center mr-4">
+                <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                    <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center list-item
+            {% if task.isDone == 1 %} done-background {% endif %}">
+                <div class="list-content">{{ task.content }}</div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                        <div class="button-done"></div>
+                    </a>
+                    <div class="button-delete">
+                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                            <button class="btn"></button>
+                        </form>
+                    </div>
+                    <a href="{{ path('task_week', {'id': task.id}) }}">
+                        <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    <h2 class="list-day">Friday</h2>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        {%  for task in tasks_friday %}
+            <div class="container-list-item">
+                <div class="d-flex align-items-center mr-4">
+                    <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                        <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="d-flex justify-content-center align-items-center list-item
+                {% if task.isDone == 1 %} done-background {% endif %}">
                     <div class="list-content">{{ task.content }}</div>
                     <div class="d-flex justify-content-center align-items-center">
                         <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
@@ -61,153 +234,34 @@
             </div>
         {% endfor %}
     </div>
-{% endif %}
-<h2 class="list-day">Monday</h2>
-<div class="d-flex flex-column justify-content-center align-items-center">
-    {%  for task in tasks_monday %}
-        <div class="d-flex justify-content-center align-items-center list-item
-        {% if task.isDone == 1 %} done-background {% endif %}">
-            <div class="list-content">{{ task.content }}</div>
-            <div class="d-flex justify-content-center align-items-center">
-                <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                    <div class="button-done"></div>
-                </a>
-                <div class="button-delete">
-                    <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                        <button class="btn"></button>
-                    </form>
-                </div>
-                <a href="{{ path('task_week', {'id': task.id}) }}">
-                    <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
-                </a>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-<h2 class="list-day">Tuesday</h2>
-<div class="d-flex flex-column justify-content-center align-items-center">
-    {%  for task in tasks_tuesday %}
-        <div class="d-flex justify-content-center align-items-center list-item
-        {% if task.isDone == 1 %} done-background {% endif %}">
-            <div class="list-content">{{ task.content }}</div>
-            <div class="d-flex justify-content-center align-items-center">
-                <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                    <div class="button-done"></div>
-                </a>
-                <div class="button-delete">
-                    <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                        <button class="btn"></button>
-                    </form>
-                </div>
-                <a href="{{ path('task_week', {'id': task.id}) }}">
-                    <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
-                </a>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-<h2 class="list-day">Wednesday</h2>
-<div class="d-flex flex-column justify-content-center align-items-center">
-    {%  for task in tasks_wednesday %}
-        <div class="d-flex justify-content-center align-items-center list-item
-        {% if task.isDone == 1 %} done-background {% endif %}">
-            <div class="list-content">{{ task.content }}</div>
-            <div class="d-flex justify-content-center align-items-center">
-                <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                    <div class="button-done"></div>
-                </a>
-                <div class="button-delete">
-                    <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                        <button class="btn"></button>
-                    </form>
-                </div>
-                <a href="{{ path('task_week', {'id': task.id}) }}">
-                    <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
-                </a>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-<h2 class="list-day">Thursday</h2>
-<div class="d-flex flex-column justify-content-center align-items-center">
-    {%  for task in tasks_thursday %}
-        <div class="d-flex justify-content-center align-items-center list-item
-        {% if task.isDone == 1 %} done-background {% endif %}">
-            <div class="list-content">{{ task.content }}</div>
-            <div class="d-flex justify-content-center align-items-center">
-                <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                    <div class="button-done"></div>
-                </a>
-                <div class="button-delete">
-                    <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                        <button class="btn"></button>
-                    </form>
-                </div>
-                <a href="{{ path('task_week', {'id': task.id}) }}">
-                    <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
-                </a>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-    <h2 class="list-day">Friday</h2>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        {%  for task in tasks_friday %}
-            <div class="d-flex justify-content-center align-items-center list-item
-            {% if task.isDone == 1 %} done-background {% endif %}">
-                <div class="list-content">{{ task.content }}</div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                        <div class="button-done"></div>
-                    </a>
-                    <div class="button-delete">
-                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                            <button class="btn"></button>
-                        </form>
-                    </div>
-                    <a href="{{ path('task_week', {'id': task.id}) }}">
-                        <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
     <h2 class="list-day">Saturday</h2>
     <div class="d-flex flex-column justify-content-center align-items-center">
         {%  for task in tasks_saturday %}
-            <div class="d-flex justify-content-center align-items-center list-item
-            {% if task.isDone == 1 %} done-background {% endif %}">
-                <div class="list-content">{{ task.content }}</div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                        <div class="button-done"></div>
+            <div class="container-list-item">
+                <div class="d-flex align-items-center mr-4">
+                    <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                        <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
                     </a>
-                    <div class="button-delete">
-                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                            <button class="btn"></button>
-                        </form>
+                </div>
+                <div class="d-flex justify-content-center align-items-center list-item
+                {% if task.isDone == 1 %} done-background {% endif %}">
+                    <div class="list-content">{{ task.content }}</div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                            <div class="button-done"></div>
+                        </a>
+                        <div class="button-delete">
+                            <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                                <button class="btn"></button>
+                            </form>
+                        </div>
+                        <a href="{{ path('task_week', {'id': task.id}) }}">
+                            <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                        </a>
                     </div>
-                    <a href="{{ path('task_week', {'id': task.id}) }}">
-                        <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
-                    </a>
                 </div>
             </div>
         {% endfor %}
@@ -215,24 +269,64 @@
     <h2 class="list-day">Sunday</h2>
     <div class="d-flex flex-column justify-content-center align-items-center">
         {%  for task in tasks_sunday %}
-            <div class="d-flex justify-content-center align-items-center list-item
-            {% if task.isDone == 1 %} done-background {% endif %}">
-                <div class="list-content">{{ task.content }}</div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
-                        <div class="button-done"></div>
+            <div class="container-list-item">
+                <div class="d-flex align-items-center mr-4">
+                    <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                        <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
                     </a>
-                    <div class="button-delete">
-                        <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
-                            <button class="btn"></button>
-                        </form>
+                </div>
+                <div class="d-flex justify-content-center align-items-center list-item
+                {% if task.isDone == 1 %} done-background {% endif %}">
+                    <div class="list-content">{{ task.content }}</div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                            <div class="button-done"></div>
+                        </a>
+                        <div class="button-delete">
+                            <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                                <button class="btn"></button>
+                            </form>
+                        </div>
+                        <a href="{{ path('task_week', {'id': task.id}) }}">
+                            <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                        </a>
                     </div>
-                    <a href="{{ path('task_week', {'id': task.id}) }}">
-                        <div class="button-week
-                    {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2 class="list-day">Not defined</h2>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        {%  for task in tasks_not_defined %}
+            <div class="container-list-item">
+                <div class="d-flex align-items-center mr-4">
+                    <a href="{{ path("task_edit",{'id': task.id, 'page': "week"}) }}">
+                        <i class="fa fa-2x fa-cog" aria-hidden="true"></i>
                     </a>
+                </div>
+                <div class="d-flex justify-content-center align-items-center list-item
+                {% if task.isDone == 1 %} done-background {% endif %}">
+                    <div class="list-content">{{ task.content }}</div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{{ path('task_done', {'id': task.id, 'page':'week'}) }}">
+                            <div class="button-done"></div>
+                        </a>
+                        <div class="button-delete">
+                            <form method="post" action="{{ path('task_delete', {'id': task.id, 'page' : 'week'}) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                                <button class="btn"></button>
+                            </form>
+                        </div>
+                        <a href="{{ path('task_week', {'id': task.id}) }}">
+                            <div class="button-week
+                        {% if task.isOfTheWeek == 1 %} week-button {% endif %}"></div>
+                        </a>
+                    </div>
                 </div>
             </div>
         {% endfor %}

@@ -13,8 +13,8 @@
             </div>
             <div>
                 <div>This week ?</div>
-                <div id="is-of-the-week-button" class="mr-2">
-                    {{ form_row(task_form.isOfTheWeek) }}
+                <div class="mr-2">
+                    {{ form_row(task_form.isOfTheWeek, {label_attr: {class: 'checkbox-custom'}}) }}
                 </div>
             </div>
             <div>
@@ -28,3 +28,4 @@
         {{ form_end(task_form) }}
     </div>
 </div>
+

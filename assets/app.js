@@ -11,10 +11,24 @@ import './styles/app.scss';
 //Bootstrap
 const $ = require('jquery');
 require('bootstrap');
+
+//js files
 require('./js/anime.min');
 require('./js/buttons');
 require('./js/charts');
 require('./js/animations');
+
+//Swup
+import Swup from 'swup';
+import SwupOverlayTheme from '@swup/overlay-theme';
+
+const swup = new Swup({
+    plugins: [
+        new SwupOverlayTheme({
+            color: '#d5ebeb'
+        })
+    ]
+});
 
 
 

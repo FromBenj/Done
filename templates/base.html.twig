@@ -7,21 +7,24 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% include 'components/_nav.html.twig' %}
-        {% for category, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
-                </div>
+        <body>
+            {% include 'components/_nav.html.twig' %}
+            {% for category, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-        <div class="main">
-            {% include 'components/_datetime.html.twig' %}
-            {% block body %}{% endblock %}
-        </div>
-        {{ encore_entry_script_tags('app') }}
-         {% block javascripts %}
-        {% endblock %}
-    </body>
+            <div id="swup">
+                <div class="main">
+                    {% include 'components/_datetime.html.twig' %}
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+            {{ encore_entry_script_tags('app') }}
+            {% block javascripts %}
+            {% endblock %}
+        </body>
+
 </html>
