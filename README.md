@@ -1,12 +1,12 @@
 # Done
 
 Your time is valuable. Being organized is the best way to save time.
-
 Done is a simple web app / mobile web app that helps you list and manage your tasks to be done in order to create daily and weekly customizable to-do lists.
 
 I created this web app during a 8-hour school exam. 
 
-# How to run
+
+## How to run
 - clone the repo
 - run ```composer install```
 - run ```yarn install```
