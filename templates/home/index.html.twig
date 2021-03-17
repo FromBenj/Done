@@ -8,6 +8,7 @@
     {{ encore_entry_link_tags('app') }}
     <title>Everything will be done!</title>
 </head>
+{# <div id="swup"> #}
 <body>
     <div id="home-container">
         <div class="home-logo w-50">
@@ -36,7 +37,7 @@
                 </a>
             </div>
             <div>
-                <a class="home-signin" href="{{ path('home') }}">
+                <a class="home-signin" href="{{ path('app_register') }}">
                     SignIn
                 </a>
             </div>
@@ -46,4 +47,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js" integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ==" crossorigin="anonymous"></script>
     {{ encore_entry_script_tags('app') }}
 </body>
+{# </div> #}
 </html>

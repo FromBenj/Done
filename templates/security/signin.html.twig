@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign in!{% endblock %}
+
+{% block body %}
+    {% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <div class="d-flex justify-content-center flex-column align-items-center">
+        <h1 class="h3 font-weight-normal login-title">Please sign in</h1>
+        <div class="text-center">
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+            <button class="btn btn-lg done-button" type="submit">
+                Register
+            </button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}
