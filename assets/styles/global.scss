@@ -57,3 +57,11 @@ h5 {
   color: white;
   font-weight: bold;
 }
+
+.btn-primary {
+  background-color: #92afaf;
+  color:white;
+  &:hover {
+    background-color: #d5ebeb;
+  }
+}
